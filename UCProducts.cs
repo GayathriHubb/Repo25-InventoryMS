@@ -160,12 +160,7 @@ namespace InventoryManagementSystem
                         path = Path.Combine(basedirectory, relativepath);
 
                         string directorypath = Path.GetDirectoryName(path);
-                        if (!Directory.Exists(directorypath))
-                        {
-                            Directory.CreateDirectory(directorypath);
-                        }
-
-                        PicBxProduct.Image = null;
+                        
 
                         if (!string.IsNullOrEmpty(PicBxProduct.ImageLocation))
                         { File.Copy(PicBxProduct.ImageLocation, path, true); }
@@ -173,8 +168,8 @@ namespace InventoryManagementSystem
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "PicBox - Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                        return;
                     }
+                        
 
                     using (SqlConnection sqlcon = new SqlConnection(constring))
                     {
@@ -367,3 +362,4 @@ namespace InventoryManagementSystem
 
     }
 }
+
